@@ -1,28 +1,28 @@
 package com.argonet.hellospring.service;
 
 import com.argonet.hellospring.domain.Member;
+import com.argonet.hellospring.repository.MemberRepository;
 import com.argonet.hellospring.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@SpringBootTest
+@Transactional
 class MemberServiceInntegrationTest {
+    @Autowired
     MemberService  memberService ;
-    MemoryMemberRepository memoryMemberRepository;
+    @Autowired
+    MemberRepository memoryMemberRepository;
 
-    @BeforeEach
-    public void beforeEach() {
-        this.memberService = new MemberService(memoryMemberRepository);
-        this.memoryMemberRepository = new MemoryMemberRepository();
-    }
 
-    @AfterEach
-    public void afterEach(){
-        memoryMemberRepository.clearStore();
-    }
+
 
     @Test
     void join() {
@@ -41,7 +41,7 @@ class MemberServiceInntegrationTest {
         member1.setName("hellow");
 
         Member member2 = new Member();
-        member2.setName("hellow");
+        member2.setName("helleeow");
 
         memberService.join(member1);
 

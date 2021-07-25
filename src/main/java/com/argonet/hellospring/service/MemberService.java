@@ -30,13 +30,12 @@ public class MemberService {
     }
 
     private void validateIfMemmberAvailable(Member member) {
-        System.out.println(member.getName()+"-------------------aaaaaaaa");
+
         memoryMemberRepository.findByName(member.getName())
           .ifPresent(m->{
             throw new IllegalStateException("This member already exist");
           });
 
-        System.out.println(member.getName()+"-------------------Zzzzzzzzzzzzzz");
     }
 
     /*ALl members listings*/

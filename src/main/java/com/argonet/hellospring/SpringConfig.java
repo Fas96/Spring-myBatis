@@ -1,5 +1,6 @@
 package com.argonet.hellospring;
 
+import com.argonet.hellospring.repository.JdbcTemplateMemberRepository;
 import com.argonet.hellospring.repository.MemberRepository;
 import com.argonet.hellospring.repository.MemoryMemberRepository;
 import com.argonet.hellospring.repository.jdbcMemberRepository;
@@ -25,6 +26,8 @@ public class SpringConfig {
     }
     @Bean
     public MemberRepository memberRepository(){
-        return new jdbcMemberRepository(dataSource);
+
+        //return new jdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
